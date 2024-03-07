@@ -17,6 +17,9 @@ public:
 	UPROPERTY(VisibleAnywhere, Category = "Ice Block")
 	FTransform Init_Transform;
 
+	UPROPERTY(EditAnywhere, Category = "Ice Block")
+	FVector Init_Velocity;
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Ice Block")
 	UStaticMeshComponent* StaticMeshComponent;
 

@@ -22,6 +22,7 @@ void AIceBlock::BeginPlay()
 	//m_PrimitiveComponent = FindComponentByClass<UPrimitiveComponent>();
 	
 	UE_LOG(LogTemp, Warning, TEXT("Ice Block Begin Play!\n"));
+	StaticMeshComponent->SetPhysicsLinearVelocity(Init_Velocity);
 }
 
 // Called every frame
@@ -45,5 +46,7 @@ void AIceBlock::Reset_Implementation()
 	}
 	// TODO: make reset a progress
 	SetActorTransform(Init_Transform);
+
+	StaticMeshComponent->SetPhysicsLinearVelocity(Init_Velocity);
 }
 
