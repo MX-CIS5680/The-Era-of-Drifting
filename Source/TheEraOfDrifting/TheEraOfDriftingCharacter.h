@@ -5,6 +5,9 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "Logging/LogMacros.h"
+#include "Public/Resetable.h"
+#include "Public/CheckPoint.h"
+#include "CoreUObject.h"
 #include "TheEraOfDriftingCharacter.generated.h"
 
 class USpringArmComponent;
@@ -16,7 +19,7 @@ struct FInputActionValue;
 DECLARE_LOG_CATEGORY_EXTERN(LogTemplateCharacter, Log, All);
 
 UCLASS(config=Game)
-class ATheEraOfDriftingCharacter : public ACharacter
+class ATheEraOfDriftingCharacter : public ACharacter, public IResetable
 {
 	GENERATED_BODY()
 
@@ -46,7 +49,8 @@ class ATheEraOfDriftingCharacter : public ACharacter
 
 public:
 	ATheEraOfDriftingCharacter();
-	
+
+	void Reset_Implementation() override;
 
 protected:
 
@@ -69,5 +73,12 @@ public:
 	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
 	/** Returns FollowCamera subobject **/
 	FORCEINLINE class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
+
+public:
+	UPROPERTY(VisibleAnywhere, Category = "EraOfDrifting")
+	FTransform Init_Transform;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "EraOfDrifting")
+	TWeakObjectPtr<ACheckPoint> LastCheckPoint;
 };
 

@@ -58,6 +58,7 @@ void ATheEraOfDriftingCharacter::BeginPlay()
 {
 	// Call the base class  
 	Super::BeginPlay();
+	Init_Transform = GetActorTransform();
 
 	//Add Input Mapping Context
 	if (APlayerController* PlayerController = Cast<APlayerController>(Controller))
@@ -126,5 +127,21 @@ void ATheEraOfDriftingCharacter::Look(const FInputActionValue& Value)
 		// add yaw and pitch input to controller
 		AddControllerYawInput(LookAxisVector.X);
 		AddControllerPitchInput(LookAxisVector.Y);
+	}
+}
+
+void ATheEraOfDriftingCharacter::Reset_Implementation()
+{
+	// Set the velocity to zero
+	GetCharacterMovement()->Velocity = FVector::ZeroVector;
+
+	// TODO: make reset a progress
+	if (LastCheckPoint.IsValid())
+	{
+		SetActorTransform(LastCheckPoint.Get()->GetActorTransform());
+	}
+	else
+	{
+		SetActorTransform(Init_Transform);
 	}
 }

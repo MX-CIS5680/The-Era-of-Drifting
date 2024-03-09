@@ -7,7 +7,7 @@
 #include "Resetable.generated.h"
 
 // This class does not need to be modified.
-UINTERFACE(MinimalAPI)
+UINTERFACE(BlueprintType)
 class UResetable : public UInterface
 {
 	GENERATED_BODY()
