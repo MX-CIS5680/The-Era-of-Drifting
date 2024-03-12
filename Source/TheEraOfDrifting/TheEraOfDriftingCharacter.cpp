@@ -145,3 +145,19 @@ void ATheEraOfDriftingCharacter::Reset_Implementation()
 		SetActorTransform(Init_Transform);
 	}
 }
+
+void ATheEraOfDriftingCharacter::Freeze()
+{
+	GetCharacterMovement()->DisableMovement();
+	GetMesh()->bPauseAnims = true;
+}
+
+void ATheEraOfDriftingCharacter::Die()
+{
+	auto* mesh = GetMesh();
+	mesh->SetSimulatePhysics(true);
+	//mesh->AddImpulse(FVector(0.f));
+
+	//GetMesh()->SetAllPhysicsLinearVelocity(FVector::ZeroVector);
+	//GetCharacterMovement()->DisableMovement();
+}

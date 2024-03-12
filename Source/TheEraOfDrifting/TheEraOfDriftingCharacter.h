@@ -52,6 +52,12 @@ public:
 
 	void Reset_Implementation() override;
 
+	UFUNCTION(BlueprintCallable)
+	void Freeze();
+
+	UFUNCTION(BlueprintCallable)
+	void Die();
+
 protected:
 
 	/** Called for movement input */
