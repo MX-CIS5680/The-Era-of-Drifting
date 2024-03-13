@@ -156,6 +156,7 @@ void ATheEraOfDriftingCharacter::Die()
 {
 	auto* mesh = GetMesh();
 	mesh->SetSimulatePhysics(true);
+	GetCharacterMovement()->DisableMovement();
 	//mesh->AddImpulse(FVector(0.f));
 
 	//GetMesh()->SetAllPhysicsLinearVelocity(FVector::ZeroVector);
