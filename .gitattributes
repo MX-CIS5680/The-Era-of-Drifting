@@ -1,7 +1,1 @@
 * text=auto
-Content/StarterContent/** filter=lfs diff=lfs merge=lfs -text
-Content/Characters/** filter=lfs diff=lfs merge=lfs -text
-Content/LevelPrototyping/** filter=lfs diff=lfs merge=lfs -text
-Content/Models/** filter=lfs diff=lfs merge=lfs -text
-Content/Textures/** filter=lfs diff=lfs merge=lfs -text
-Content/Sounds/** filter=lfs diff=lfs merge=lfs -text
