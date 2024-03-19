@@ -47,6 +47,9 @@ class ATheEraOfDriftingCharacter : public ACharacter, public IResetable
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	UInputAction* LookAction;
 
+	UPROPERTY(EditAnywhere)
+	FTransform Init_MeshRelativeTransform;
+
 public:
 	ATheEraOfDriftingCharacter();
 
@@ -54,6 +57,9 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	void Freeze();
+
+	UFUNCTION(BlueprintCallable)
+	void Unfreeze();
 
 	UFUNCTION(BlueprintCallable)
 	void Die();

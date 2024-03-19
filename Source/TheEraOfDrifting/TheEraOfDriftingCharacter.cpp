@@ -68,6 +68,9 @@ void ATheEraOfDriftingCharacter::BeginPlay()
 			Subsystem->AddMappingContext(DefaultMappingContext, 0);
 		}
 	}
+
+	//Get the mesh transform to reset mesh
+	Init_MeshRelativeTransform = GetMesh()->GetRelativeTransform();
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -144,12 +147,24 @@ void ATheEraOfDriftingCharacter::Reset_Implementation()
 	{
 		SetActorTransform(Init_Transform);
 	}
+
+	//reset mesh
+	auto mesh = GetMesh();
+	mesh->SetSimulatePhysics(false);
+	mesh->SetRelativeTransform(Init_MeshRelativeTransform);
+	
 }
 
 void ATheEraOfDriftingCharacter::Freeze()
 {
 	GetCharacterMovement()->DisableMovement();
 	GetMesh()->bPauseAnims = true;
+}
+
+void ATheEraOfDriftingCharacter::Unfreeze()
+{
+	GetCharacterMovement()->SetMovementMode(MOVE_Walking);
+	GetMesh()->bPauseAnims = false;
 }
 
 void ATheEraOfDriftingCharacter::Die()
