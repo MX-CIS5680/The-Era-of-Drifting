@@ -151,8 +151,10 @@ void ATheEraOfDriftingCharacter::Reset_Implementation()
 	//reset mesh
 	auto mesh = GetMesh();
 	mesh->SetSimulatePhysics(false);
+	mesh->AttachToComponent(GetCapsuleComponent(), FAttachmentTransformRules::KeepRelativeTransform);
 	mesh->SetRelativeTransform(Init_MeshRelativeTransform);
-	
+	GetCharacterMovement()->SetMovementMode(MOVE_Walking);
+	//mesh->SetSkeletalMeshAsset()
 }
 
 void ATheEraOfDriftingCharacter::Freeze()
