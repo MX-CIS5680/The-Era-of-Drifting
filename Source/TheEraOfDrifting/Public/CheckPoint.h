@@ -28,7 +28,11 @@ public:
 	FORCEINLINE bool Active() const { return IsActive; }
 
 	UFUNCTION(BlueprintCallable)
-	FORCEINLINE void Disable() { IsActive = false; }
+	FORCEINLINE void Disable() { IsActive = false; DisableEffect(); }
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void DisableEffect();
+
 public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	TObjectPtr<UBoxComponent> BoxCollider;
