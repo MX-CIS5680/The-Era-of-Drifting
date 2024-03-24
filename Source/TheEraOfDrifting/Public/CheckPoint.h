@@ -33,10 +33,19 @@ public:
 	UFUNCTION(BlueprintImplementableEvent)
 	void DisableEffect();
 
+	UFUNCTION(BlueprintCallable)
+	FVector GetCheckPosition() const;
+
 public:
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	TObjectPtr<UStaticMeshComponent> Mesh;
+
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	TObjectPtr<UBoxComponent> BoxCollider;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	bool IsActive;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	TObjectPtr<UBoxComponent> RebirthPoint;
 };

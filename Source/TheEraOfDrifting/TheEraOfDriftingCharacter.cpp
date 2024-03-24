@@ -141,7 +141,7 @@ void ATheEraOfDriftingCharacter::Reset_Implementation()
 	// TODO: make reset a progress
 	if (LastCheckPoint.IsValid())
 	{
-		SetActorTransform(LastCheckPoint.Get()->GetActorTransform());
+		SetActorLocation(LastCheckPoint->GetCheckPosition());
 	}
 	else
 	{
