@@ -4,6 +4,9 @@
 
 #include "CoreMinimal.h"
 #include "LevelSequenceActor.h"
+#include "LevelSequencePlayer.h"
+#include "MovieScene.h"
+
 #include "WhiteGhostPlayer.generated.h"
 
 /**
@@ -25,11 +28,19 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "EraOfDrifting")
 	void LateInit();
 
+	UFUNCTION(BlueprintCallable, Category = "EraOfDrifting")
+	FORCEINLINE bool IsLateInit() const { return b_LateInit; }
+
+	//UFUNCTION(BlueprintCallable, Category = "EraOfDrifting")
+	//FORCEINLINE float GetRemainTime() const { 
+	//	return SequencePlayer->GetSequence()-> - SequencePlayer->GetPlaybackPosition();
+	//}
+
 public:
 	UPROPERTY(EditAnywhere, Category = "EraOfDrifting")
 	TSubclassOf<class AActor> BP;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "EraOfDrifting")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "EraOfDrifting")
 	TObjectPtr<AActor> BP_Actor;
 
 protected:

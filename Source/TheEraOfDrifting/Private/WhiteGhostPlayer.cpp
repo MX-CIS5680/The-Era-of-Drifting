@@ -2,10 +2,7 @@
 
 
 #include "WhiteGhostPlayer.h"
-
 #include "LevelSequence.h"
-#include "MovieScene.h"
-#include "LevelSequencePlayer.h"
 #include "MovieSceneObjectBindingID.h"
 
 void AWhiteGhostPlayer::BeginPlay()
@@ -24,6 +21,8 @@ void AWhiteGhostPlayer::BeginPlay()
 
 void AWhiteGhostPlayer::Tick(float DeltaTime)
 {
+    Super::Tick(DeltaTime);
+    
     if (!b_LateInit)
     {
         LateInit();
@@ -33,8 +32,6 @@ void AWhiteGhostPlayer::Tick(float DeltaTime)
 
 void AWhiteGhostPlayer::LateInit()
 {
-    //TArray<AActor*> actors{ BP_Actor };
-
     UMovieScene* movie_scene = LevelSequenceAsset->GetMovieScene();
 
     FGuid id = movie_scene->GetSpawnable(0).GetGuid();
