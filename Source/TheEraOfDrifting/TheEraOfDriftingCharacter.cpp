@@ -135,26 +135,7 @@ void ATheEraOfDriftingCharacter::Look(const FInputActionValue& Value)
 
 void ATheEraOfDriftingCharacter::Reset_Implementation()
 {
-	// Set the velocity to zero
-	GetCharacterMovement()->Velocity = FVector::ZeroVector;
-
-	// TODO: make reset a progress
-	if (LastCheckPoint.IsValid())
-	{
-		SetActorLocation(LastCheckPoint->GetCheckPosition());
-	}
-	else
-	{
-		SetActorTransform(Init_Transform);
-	}
-
-	//reset mesh
-	auto mesh = GetMesh();
-	mesh->SetSimulatePhysics(false);
-	mesh->AttachToComponent(GetCapsuleComponent(), FAttachmentTransformRules::KeepRelativeTransform);
-	mesh->SetRelativeTransform(Init_MeshRelativeTransform);
-	GetCharacterMovement()->SetMovementMode(MOVE_Walking);
-	//mesh->SetSkeletalMeshAsset()
+	OnResetStart();
 }
 
 void ATheEraOfDriftingCharacter::Freeze()
@@ -178,4 +159,27 @@ void ATheEraOfDriftingCharacter::Die()
 
 	//GetMesh()->SetAllPhysicsLinearVelocity(FVector::ZeroVector);
 	//GetCharacterMovement()->DisableMovement();
+}
+
+void ATheEraOfDriftingCharacter::ResetInternal()
+{
+	// Set the velocity to zero
+	GetCharacterMovement()->Velocity = FVector::ZeroVector;
+
+	// TODO: make reset a progress
+	if (LastCheckPoint.IsValid())
+	{
+		SetActorLocation(LastCheckPoint->GetCheckPosition());
+	}
+	else
+	{
+		SetActorTransform(Init_Transform);
+	}
+
+	//reset mesh
+	auto mesh = GetMesh();
+	mesh->SetSimulatePhysics(false);
+	mesh->AttachToComponent(GetCapsuleComponent(), FAttachmentTransformRules::KeepRelativeTransform);
+	mesh->SetRelativeTransform(Init_MeshRelativeTransform);
+	GetCharacterMovement()->SetMovementMode(MOVE_Walking);
 }

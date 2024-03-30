@@ -64,6 +64,15 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void Die();
 
+	UFUNCTION(BlueprintImplementableEvent)
+	void OnResetStart();
+
+	UFUNCTION(BlueprintCallable)
+	void ResetInternal();
+
+	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+	void OnResetFinished();
+
 protected:
 
 	/** Called for movement input */
