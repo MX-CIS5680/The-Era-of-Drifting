@@ -33,6 +33,6 @@ void ACheckPoint::Tick(float DeltaTime)
 
 FVector ACheckPoint::GetCheckPosition() const
 {
-	return RebirthPoint->GetRelativeLocation() + GetActorLocation();
+	return RebirthPoint->GetComponentLocation();
 }
 
