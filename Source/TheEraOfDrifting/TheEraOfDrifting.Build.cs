@@ -8,6 +8,23 @@ public class TheEraOfDrifting : ModuleRules
 	{
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 
-		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "EnhancedInput", "LevelSequence", "MovieScene" });
-	}
+        PublicDependencyModuleNames.AddRange(new string[] {
+            "Core",
+            "CoreUObject",
+            "Engine",
+            "InputCore",
+            "EnhancedInput",
+            "LevelSequence",
+            "SlateCore",
+            "MovieScene",
+            "TakeMovieScene",
+            "Sequencer",
+            "TakeRecorderSources",
+            "TakesCore",
+            "TakeRecorder",
+            "TakeTrackRecorders",
+            "AssetRegistry",
+            "SerializedRecorderInterface"
+        });
+    }
 }
