@@ -70,6 +70,15 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void ResetInternal();
 
+	UFUNCTION(BlueprintImplementableEvent)
+	void BeforeResetDirectly();
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void AfterResetDirectly();
+
+	UFUNCTION(BlueprintCallable)
+	void ResetDirectly();
+
 	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
 	void OnResetFinished();
 

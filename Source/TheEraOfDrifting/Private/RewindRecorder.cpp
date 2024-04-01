@@ -40,6 +40,14 @@ void ARewindRecorder::BeginPlay()
 
 void ARewindRecorder::EndPlay(const EEndPlayReason::Type EndPlayReason)
 {
+	Super::EndPlay(EndPlayReason);
+
+	UMyTakeRecorder* CurrentRecording = UMyTakeRecorder::GetActiveRecorder();
+	if (CurrentRecording)
+	{
+		CurrentRecording->Stop();
+		ResetForRecord();
+	}
 	if (has_Source)
 	{
 		UTakeRecorderSources* sources = SaveToSequence->FindMetaData<UTakeRecorderSources>();
@@ -57,7 +65,6 @@ void ARewindRecorder::EndPlay(const EEndPlayReason::Type EndPlayReason)
 void ARewindRecorder::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
 }
 
 bool ARewindRecorder::StartRecord()
@@ -159,6 +166,28 @@ void ARewindRecorder::StopRecord()
 		RecordedSequence = LoadObject<ULevelSequence>(nullptr, *path);
 
 		OnRecordStopEvent();
+	}
+}
+
+void ARewindRecorder::PauseRecord()
+{
+	UMyTakeRecorder* CurrentRecording = UMyTakeRecorder::GetActiveRecorder();
+
+	if (!IsPause && CurrentRecording)
+	{
+		CurrentRecording->State = EMyTakeRecorderState::Pause;
+		IsPause = true;
+	}
+}
+
+void ARewindRecorder::ResumeRecord()
+{
+	UMyTakeRecorder* CurrentRecording = UMyTakeRecorder::GetActiveRecorder();
+
+	if (IsPause && CurrentRecording)
+	{
+		CurrentRecording->State = EMyTakeRecorderState::Started;
+		IsPause = false;
 	}
 }
 

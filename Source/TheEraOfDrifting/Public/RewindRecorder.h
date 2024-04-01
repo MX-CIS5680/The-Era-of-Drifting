@@ -19,7 +19,6 @@ class THEERAOFDRIFTING_API ARewindRecorder : public AActor
 public:	
 	// Sets default values for this actor's properties
 	ARewindRecorder();
-
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -34,6 +33,12 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	void StopRecord();
+
+	UFUNCTION(BlueprintCallable)
+	void PauseRecord();
+
+	UFUNCTION(BlueprintCallable)
+	void ResumeRecord();
 
 	UFUNCTION(BlueprintCallable)
 	void PlayRewind();
@@ -77,4 +82,6 @@ public:
 	TObjectPtr<ULevelSequence> RecordedSequence;
 
 	bool has_Source;
+
+	bool IsPause = false;
 };

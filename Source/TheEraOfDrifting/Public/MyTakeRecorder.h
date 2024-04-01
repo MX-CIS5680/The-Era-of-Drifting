@@ -32,6 +32,7 @@ enum class EMyTakeRecorderState : uint8
 	Started,
 	Stopped,
 	Cancelled,
+	Pause
 };
 
 DECLARE_MULTICAST_DELEGATE_OneParam(FOnMyTakeRecordingPreInitialize, UMyTakeRecorder*);

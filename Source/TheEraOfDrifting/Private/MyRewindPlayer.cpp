@@ -95,7 +95,7 @@ float ARewindPlayer::ComputePlayRate(float const& expectedFinishedTime) const
 	if (SequencePlayer)
 	{
 		auto const duration = SequencePlayer->GetDuration();
-		return 5.f;// duration.AsSeconds() / expectedFinishedTime;
+		return (duration.AsSeconds() > 3.f ? duration.AsSeconds() / expectedFinishedTime : 5.f);
 	}
 	return 1.f;
 }
